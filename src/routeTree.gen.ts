@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcoesRouteImport } from './routes/acoes'
+import { Route as AssistenteRouteImport } from './routes/assistente'
+import { Route as ConfiguracoesRouteImport } from './routes/configuracoes'
+import { Route as PipelineRouteImport } from './routes/pipeline'
+import { Route as RelatoriosRouteImport } from './routes/relatorios'
+import { Route as OportunidadesIndexRouteImport } from './routes/oportunidades.index'
+import { Route as OportunidadesIdRouteImport } from './routes/oportunidades.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AcoesRoute = AcoesRouteImport.update({
+  id: '/acoes',
+  path: '/acoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistenteRoute = AssistenteRouteImport.update({
+  id: '/assistente',
+  path: '/assistente',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConfiguracoesRoute = ConfiguracoesRouteImport.update({
+  id: '/configuracoes',
+  path: '/configuracoes',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PipelineRoute = PipelineRouteImport.update({
+  id: '/pipeline',
+  path: '/pipeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RelatoriosRoute = RelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OportunidadesIndexRoute = OportunidadesIndexRouteImport.update({
+  id: '/oportunidades/',
+  path: '/oportunidades/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OportunidadesIdRoute = OportunidadesIdRouteImport.update({
+  id: '/oportunidades/$id',
+  path: '/oportunidades/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/acoes': typeof AcoesRoute
+  '/assistente': typeof AssistenteRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/pipeline': typeof PipelineRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/oportunidades/$id': typeof OportunidadesIdRoute
+  '/oportunidades/': typeof OportunidadesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/acoes': typeof AcoesRoute
+  '/assistente': typeof AssistenteRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/pipeline': typeof PipelineRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/oportunidades/$id': typeof OportunidadesIdRoute
+  '/oportunidades': typeof OportunidadesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/acoes': typeof AcoesRoute
+  '/assistente': typeof AssistenteRoute
+  '/configuracoes': typeof ConfiguracoesRoute
+  '/pipeline': typeof PipelineRoute
+  '/relatorios': typeof RelatoriosRoute
+  '/oportunidades/$id': typeof OportunidadesIdRoute
+  '/oportunidades/': typeof OportunidadesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/acoes'
+    | '/assistente'
+    | '/configuracoes'
+    | '/pipeline'
+    | '/relatorios'
+    | '/oportunidades/$id'
+    | '/oportunidades/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/acoes'
+    | '/assistente'
+    | '/configuracoes'
+    | '/pipeline'
+    | '/relatorios'
+    | '/oportunidades/$id'
+    | '/oportunidades'
+  id:
+    | '__root__'
+    | '/'
+    | '/acoes'
+    | '/assistente'
+    | '/configuracoes'
+    | '/pipeline'
+    | '/relatorios'
+    | '/oportunidades/$id'
+    | '/oportunidades/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcoesRoute: typeof AcoesRoute
+  AssistenteRoute: typeof AssistenteRoute
+  ConfiguracoesRoute: typeof ConfiguracoesRoute
+  PipelineRoute: typeof PipelineRoute
+  RelatoriosRoute: typeof RelatoriosRoute
+  OportunidadesIdRoute: typeof OportunidadesIdRoute
+  OportunidadesIndexRoute: typeof OportunidadesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/acoes': {
+      id: '/acoes'
+      path: '/acoes'
+      fullPath: '/acoes'
+      preLoaderRoute: typeof AcoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistente': {
+      id: '/assistente'
+      path: '/assistente'
+      fullPath: '/assistente'
+      preLoaderRoute: typeof AssistenteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/configuracoes': {
+      id: '/configuracoes'
+      path: '/configuracoes'
+      fullPath: '/configuracoes'
+      preLoaderRoute: typeof ConfiguracoesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pipeline': {
+      id: '/pipeline'
+      path: '/pipeline'
+      fullPath: '/pipeline'
+      preLoaderRoute: typeof PipelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relatorios': {
+      id: '/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof RelatoriosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oportunidades/': {
+      id: '/oportunidades/'
+      path: '/oportunidades'
+      fullPath: '/oportunidades/'
+      preLoaderRoute: typeof OportunidadesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oportunidades/$id': {
+      id: '/oportunidades/$id'
+      path: '/oportunidades/$id'
+      fullPath: '/oportunidades/$id'
+      preLoaderRoute: typeof OportunidadesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcoesRoute: AcoesRoute,
+  AssistenteRoute: AssistenteRoute,
+  ConfiguracoesRoute: ConfiguracoesRoute,
+  PipelineRoute: PipelineRoute,
+  RelatoriosRoute: RelatoriosRoute,
+  OportunidadesIdRoute: OportunidadesIdRoute,
+  OportunidadesIndexRoute: OportunidadesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
