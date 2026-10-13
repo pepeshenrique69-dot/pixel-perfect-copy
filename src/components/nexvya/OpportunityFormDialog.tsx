@@ -36,9 +36,9 @@ export function OpportunityFormDialog({
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
-    const raw = valueText.trim().replace(/\./g, "").replace(",", ".");
-    const value = raw === "" ? null : Number(raw);
-    const input = { ...v, value: value === null || Number.isNaN(value) ? (raw === "" ? null : NaN) : value };
+    const t = valueText.trim();
+    const raw = t.includes(",") ? t.replace(/\./g, "").replace(",", ".") : t;
+    const input = { ...v, value: raw === "" ? null : Number(raw) };
     const errs = validate(input);
     setErrors(errs);
     if (Object.keys(errs).length) {
